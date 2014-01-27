@@ -15,6 +15,7 @@ Tower* Tower::nodeWithTheGame(HelloWorld* game, CCPoint location)
 	Tower *pRet = new Tower();
 	if (pRet && pRet->initWithTheGame(game, location))
 	{
+		pRet->autorelease();
 		return pRet;
 	}
 	else

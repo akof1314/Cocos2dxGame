@@ -15,6 +15,7 @@ Waypoint* Waypoint::nodeWithTheGame(HelloWorld* game, CCPoint location)
 	Waypoint *pRet = new Waypoint();
 	if (pRet && pRet->initWithTheGame(game, location))
 	{
+		pRet->autorelease();
 		return pRet;
 	}
 	else

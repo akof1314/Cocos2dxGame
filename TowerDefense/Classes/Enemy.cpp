@@ -18,6 +18,7 @@ Enemy* Enemy::nodeWithTheGame(HelloWorld* game)
 	Enemy *pRet = new Enemy();
 	if (pRet && pRet->initWithTheGame(game))
 	{
+		pRet->autorelease();
 		return pRet;
 	}
 	else
