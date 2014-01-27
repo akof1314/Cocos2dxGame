@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="25" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="CatMaze" tilewidth="32" tileheight="32">
+  <image source="CatMaze.png" width="256" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="Bone" value="1"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="Multibone" value="1"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="Start" value="1"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="Dog" value="1"/>
+   </properties>
+  </tile>
+  <tile id="26">
+   <properties>
+    <property name="Spawn" value="1"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="Exit" value="1"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="Fish" value="1"/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="Wall" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Background" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJy9kUsOgDAIRDlKe/9LujWNzAeoi4lRCfNeuyJivbLJeydbfN7uUPI1q3ZkTNm76sFYFZZzl8qD2KY8kJfb4foghq7HuStjRPzsPt096KzVfxXWin82q5654zMZdmfdsD0ul/u94o64pzo63BWPbgfr/sPD3ZXFnd/JjOvR8an4397hdDyOuk7q
+  </data>
+ </layer>
+ <layer name="Objects" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzVlEsKgDAMRJsrdO39zykuAiHk13ZS8IEohs5M0+gYPhTUVpkNHtla9tzxsPJG7ypZvB5IkD3f1a3krGh37UWis8rz4Kvb84QHqJWBzN3FVHevjvC4gdwP2reqd/Id/KHfnz6BffR5ZXNpra/WUZrIdd5/tQNLm5znVfRc8KxEOW72GcELcy8DEg==
+  </data>
+ </layer>
+</map>
