@@ -16,10 +16,12 @@ AppDelegate::~AppDelegate()
 bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     auto director = Director::getInstance();
-    auto eglView = EGLView::getInstance();
-
-    director->setOpenGLView(eglView);
-    eglView->setDesignResolutionSize(480, 320, ResolutionPolicy::FIXED_WIDTH);
+    auto glview = director->getOpenGLView();
+    if(!glview) {
+        glview = GLView::createWithRect("CatMaze", Rect(0, 0, 480, 320), 1);
+        director->setOpenGLView(glview);
+    }
+    glview->setDesignResolutionSize(480, 320, ResolutionPolicy::FIXED_WIDTH);
 
     // turn on display FPS
     director->setDisplayStats(true);
