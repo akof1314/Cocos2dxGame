@@ -65,6 +65,8 @@ bool CatSprite::initWithLayer(HelloWorld *layer)
 
 void CatSprite::moveToward(const Point &target)
 {
+    this->stopActionByTag(1);
+
     Point fromTileCoord = _layer->tileCoordForPosition(this->getPosition());
     Point toTileCoord = _layer->tileCoordForPosition(target);
 
@@ -128,7 +130,7 @@ void CatSprite::moveToward(const Point &target)
             ShortestPathStep *step = ShortestPathStep::createWithPosition(adjSteps->getControlPointAtIndex(i));
 
             // 检查步骤是不是已经在closed列表
-            if (_spClosedSteps.contains(step))
+            if (this->getStepIndex(_spClosedSteps, step) != -1)
             {
                 continue;
             }
@@ -137,7 +139,7 @@ void CatSprite::moveToward(const Point &target)
             int moveCost = this->costToMoveFromStepToAdjacentStep(currentStep, step);
 
             // 检查此步骤是否已经在open列表
-            ssize_t index = _spOpenSteps.getIndex(step);
+            ssize_t index = this->getStepIndex(_spOpenSteps, step);
 
             // 不在open列表，添加它
             if (index == -1)
@@ -247,6 +249,18 @@ int CatSprite::costToMoveFromStepToAdjacentStep(const ShortestPathStep *fromStep
             && (fromStep->getPosition().y != toStep->getPosition().y)) ? 14 : 10;
 }
 
+ssize_t CatSprite::getStepIndex(const cocos2d::Vector<CatSprite::ShortestPathStep *> &steps, const CatSprite::ShortestPathStep *step)
+{
+    for (ssize_t i = 0; i < steps.size(); ++i)
+    {
+        if (steps.at(i)->isEqual(step))
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
 void CatSprite::constructPathAndStartAnimationFromStep(CatSprite::ShortestPathStep *step)
 {
     _shortestPath.clear();
@@ -348,7 +362,9 @@ void CatSprite::popStepAndAnimate()
     _shortestPath.erase(0);
 
     // 运行动作
-    this->runAction(Sequence::create(moveAction, moveCallback, nullptr));
+    Sequence *moveSequence = Sequence::create(moveAction, moveCallback, nullptr);
+    moveSequence->setTag(1);
+    this->runAction(moveSequence);
 }
 
 CatSprite::ShortestPathStep::ShortestPathStep() :

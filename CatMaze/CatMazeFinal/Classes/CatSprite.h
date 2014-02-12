@@ -58,6 +58,7 @@ private:
     void insertInOpenSteps(ShortestPathStep *step);
     int computeHScoreFromCoordToCoord(const cocos2d::Point &fromCoord, const cocos2d::Point &toCoord);
     int costToMoveFromStepToAdjacentStep(const ShortestPathStep *fromStep, const ShortestPathStep *toStep);
+    ssize_t getStepIndex(const cocos2d::Vector<ShortestPathStep*> &steps, const ShortestPathStep *step);
     void constructPathAndStartAnimationFromStep(ShortestPathStep *step);
     void popStepAndAnimate();
 };
